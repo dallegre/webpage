@@ -17,7 +17,7 @@
 
 #upperSpacer{
   position:  absolute;
-  left:      0px;
+  left:      15%;
   right:     100px;
   top:       0px;
   bottom:    auto;
@@ -28,18 +28,19 @@
 
 #mainPage{
   position: absolute;
-  left:     0px;
+  left:     15%;
   right:    0px;
   top:      auto;
   bottom:   0px;
   height:   70%;
   width:    auto;
+  max-width: 800px;
   background-color: black;
 }
 
 p.bigText{
   position: relative;
-  color:    #ead8c7;
+  color:    grey;
   left:     40px;
   right:    auto;
   top:      auto;
@@ -51,7 +52,7 @@ p.bigText{
 
 p.smallText{
   position: relative;
-  color:    #ead8c7;
+  color:    white;
   left:     50px;
   right:    auto;
   top:      auto;
@@ -62,6 +63,7 @@ p.smallText{
 }
 a{
   color: #78bca4;
+  text-decoration: none;
 }
 
 
@@ -78,7 +80,7 @@ img{
   margin-left: auto;
   margin-right: auto;
   background-color: black;
-  margin-top: 10px;
+  margin-top: 20px;
   width: 500px;
   height: 100px;
 }
@@ -102,29 +104,32 @@ img{
 
 #backButton{
   display: block;
-  margin-top: 20px;
+  margin-top: 70px;
   bottom: auto;
   margin-left: auto;
   margin-right: auto;
   height: 120px;
   width: 120px;
   color: black;
-  background-color: #ead8c7;
+  background-color: grey;
   z-index: 1;
   opacity: 0;
 }
 #backButton.opaque{
-  transition: 10s;
+  transition: 5s;
   opacity: 1;
 }
 
 p{
-  position: absolute;
   color: black;
-  margin-top: 45px;
+  position: relative;
+  top: 45px;
+  margin-left: auto;
+  margin-right: auto;
   font-family: "Helvetica";
   font-size: 30px;
   text-align: center;
+  vertical-align:center;
   opacity: 0;
 }
 p.opaque{
