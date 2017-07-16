@@ -1,0 +1,247 @@
+html{
+  height:100%;
+}
+
+#theBody{
+  color:white;
+  background-color:black;
+  height:100%;
+  width:100%;
+  z-index:0;
+}
+
+div.firstDiv{
+  float:left;
+  width:32%;
+  height:100%;
+}
+div.secondDiv{
+  float:left;
+  width:68%;
+  height:100%;
+  margin-top:10px;
+  margin-bottom:10px;
+  position:relative;
+}
+
+
+
+
+#upperSquare1{
+  background-color:black;
+  width:50px;
+  height:50px;
+  position:absolute;
+  bottom:0;
+  left:0;
+  margin-bottom:400%;
+  z-index:3;
+}
+#upperSquare1.inside{
+  margin-bottom:0%;
+  background-color:#bcb878;
+  transition:3.5s;
+}
+
+#upperSquare2{
+  background-color:black;
+  width:50px;
+  height:50px;
+  position:absolute;
+  bottom:0;
+  left:0;
+  margin-bottom:0%;
+  z-index:2;
+}
+#upperSquare2.out{
+  background-color:blue;
+  left:60px;
+  transition:2s;
+}
+#upperSquare2.in{
+  background-color:black;
+  left:0;
+  transition:2s;
+}
+
+#upperSquare3{
+  background-color:black;
+  width:50px;
+  height:50px;
+  position:absolute;
+  bottom:0;
+  left:0;
+  margin-bottom:0%;
+  z-index:1;
+}
+#upperSquare3 img{
+  width:90%;
+  margin-left:5%;
+  margin-top:2px;
+}
+#upperSquare3.out{
+  background-color:green;
+  left:120px;
+  transition:2s;
+}
+#upperSquare3.in{
+  background-color:black;
+  left:0;
+  transition:2s;
+}
+
+
+
+
+#middleSquare1{
+  height:50px;
+  width:50px;
+  background-color:black;
+  float:left;
+  margin-left:100%;
+  position:absolute;
+  left:0;
+  top:0;
+  z-index:3;
+}
+#middleSquare1.inside{
+  margin-left:0%;
+  background-color:#78bca4;
+  transition: 3.5s;
+}
+#middleSquare2{
+  height:50px;
+  width:50px;
+  background-color:black;
+  float:left;
+  margin-left:0%;
+  position:absolute;
+  left:0;
+  top:0;
+  z-index:2;
+}
+#middleSquare2 img{
+  width:90%;
+  margin-left:5%;
+  margin-top:5%;
+}
+#middleSquare2.out{
+  left:60px;
+  background-color:#ead8c7;
+  transition:2s;
+}
+#middleSquare2.in{
+  left:0;
+  background-color:black;
+  transition:2s;
+}
+#middleSquare3{
+  height:50px;
+  width:50px;
+  background-color:black;
+  float:left;
+  margin-left:0%;
+  position:absolute;
+  left:0;
+  top:0;
+  z-index:1;
+}
+#middleSquare3.out{
+  left:120px;
+  background-color:grey;
+  transition:2s;
+}
+#middleSquare3.in{
+  left:0;
+  background-color:black;
+  transition:2s;
+}
+
+
+
+
+#lowerSquare1{
+  width:50px;
+  height:50px;
+  background-color:black;
+  float:left;
+  margin-top:400%;
+  position:absolute;
+  left:0;
+  top:0;
+  z-index:3;
+}
+#lowerSquare1.inside{
+  margin-top:0%;
+  background-color:red;
+  transition:3.5s;
+}
+#lowerSquare2{
+  width:50px;
+  height:50px;
+  background-color:black;
+  float:left;
+  margin-top:0%;
+  position:absolute;
+  left:0;
+  top:0;
+  z-index:2;
+}
+#lowerSquare2.out{
+  background-color:pink;
+  left:60px;
+  transition:2s;
+}
+#lowerSquare2.in{
+  background-color:black;
+  left:0;
+  transition:2s;
+}
+#lowerSquare3{
+  width:50px;
+  height:50px;
+  background-color:black;
+  float:left;
+  margin-top:0%;
+  position:absolute;
+  left:0;
+  top:0;
+  z-index:1;
+}
+#lowerSquare3 img{
+  width:90%;
+  margin-left:5%;
+  margin-top:15%;
+}
+#lowerSquare3.out{
+  background-color:brown;
+  left:120px;
+  transition:2s;
+}
+#lowerSquare3.in{
+  background-color:black;
+  left:0;
+  transition:2s;
+}
+
+
+
+
+
+
+
+
+#upper{
+  height:50%;
+}
+#middle{
+  float:left;
+  margin-left:32%;
+  background-color:black;
+  width:68%;
+  height:50px;
+  position:relative;
+}
+#lower{
+  height:calc(50% - 50px);
+}

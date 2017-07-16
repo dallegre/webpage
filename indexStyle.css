@@ -1,0 +1,437 @@
+html{
+  height:100%;
+}
+
+#theBody{
+  color:white;
+  background-color:black;
+  height:100%;
+  width:100%;
+  z-index:0;
+}
+
+div.firstDiv{
+  float:left;
+  width:32%;
+  height:100%;
+}
+div.secondDiv{
+  float:left;
+  width:68%;
+  height:100%;
+  margin-top:20px;
+  margin-bottom:20px;
+  position:relative;
+}
+
+
+
+#textstuff{
+  color:#f2efc4;
+  position:absolute;
+  bottom:0;
+  left:0;
+  margin-bottom:200px;
+  font-family: "Helvetica";
+  font-size: 35px;
+  opacity: 0.0;
+}
+#textstuff.opaque{
+  transition: 3.0s;
+  opacity: 0.9;
+}
+#textstuff2{
+  color:#f2efc4;
+  position:absolute;
+  bottom:0;
+  left:10px;
+  margin-bottom:140px;
+  font-family: "Helvetica";
+  font-size: 25px;
+  opacity: 0.0;
+}
+#textstuff2.opaque{
+  transition: 10.0s;
+  opacity: 0.5;
+}
+
+
+#upperSquare1Text{
+  color: black;
+  margin-top: 45px;
+  font-family: "Helvetica";
+  font-size: 30px;
+  text-align: center;
+  opacity: 0;
+}
+#upperSquare1Text.opaque{
+  transition: 1.5s;
+  opacity: 1;
+}
+#upperSquare2Text{
+  color: black;
+  margin-top: 50px;
+  font-family: "Helvetica";
+  font-size: 20px;
+  text-align: center;
+  opacity: 0;
+}
+#upperSquare2Text.opaque{
+  transition: 1.0s;
+  opacity: 1;
+}
+#upperSquare2Text.transparent{
+  transition: 1.0s;
+  opacity: 0;
+}
+#upperSquare3Text{
+  color: black;
+  margin-top: 50px;
+  font-family: "Helvetica";
+  font-size: 20px;
+  text-align: center;
+  opacity: 0;
+}
+#upperSquare3Text.opaque{
+  transition: 1.0s;
+  opacity: 1;
+}
+#upperSquare3Text.transparent{
+  transition: 1.0s;
+  opacity: 0;
+}
+#upperSquare4Text{
+  color: black;
+  margin-top: 50px;
+  font-family: "Helvetica";
+  font-size: 20px;
+  text-align: center;
+  opacity: 0;
+}
+#upperSquare4Text.opaque{
+  transition: 1.0s;
+  opacity: 1;
+}
+#upperSquare4Text.transparent{
+  transition: 1.0s;
+  opacity: 0;
+}
+
+#middleSquare1Text{
+  color: black;
+  margin-top: 45px;
+  font-family: "Helvetica";
+  font-size: 30px;
+  text-align: center;
+  opacity: 0;
+}
+#middleSquare1Text.opaque{
+  transition: 1.5s;
+  opacity: 1;
+}
+#middleSquare2Text{
+  color: black;
+  margin-top: 50px;
+  font-family: "Helvetica";
+  font-size: 20px;
+  text-align: center;
+  opacity: 0;
+}
+#middleSquare2Text.opaque{
+  transition: 1.0s;
+  opacity: 1;
+}
+#middleSquare2Text.transparent{
+  transition: 1.0s;
+  opacity: 0;
+}
+#middleSquare3Text{
+  color: black;
+  margin-top: 50px;
+  font-family: "Helvetica";
+  font-size: 20px;
+  text-align: center;
+  opacity: 0;
+}
+#middleSquare3Text.opaque{
+  transition: 1.0s;
+  opacity: 1;
+}
+#middleSquare3Text.transparent{
+  transition: 1.0s;
+  opacity: 0;
+}
+
+#lowerSquare1Text{
+  color: black;
+  margin-top: 45px;
+  font-family: "Helvetica";
+  font-size: 30px;
+  text-align: center;
+  opacity: 0;
+}
+#lowerSquare1Text.opaque{
+  transition: 1.5s;
+  opacity: 1;
+}
+#lowerSquare2Text{
+  color: black;
+  margin-top: 50px;
+  font-family: "Helvetica";
+  font-size: 20px;
+  text-align: center;
+  opacity: 0;
+}
+#lowerSquare2Text.opaque{
+  transition: 1.0s;
+  opacity: 1;
+}
+#lowerSquare2Text.transparent{
+  transition: 1.0s;
+  opacity: 0;
+}
+
+
+#upperSquare1{
+  background-color:black; 
+  width:120px;
+  height:120px;
+  position:absolute;
+  bottom:0;
+  left:0;
+  margin-bottom:400%;
+  z-index:3;
+}
+#upperSquare1.inside{
+  margin-bottom:0%;
+  background-color:#bcb878;
+  transition:2.5s;
+}
+
+#upperSquare2{
+  background-color:black;
+  width:120px;
+  height:120px;
+  position:absolute;
+  bottom:0;
+  left:0;
+  margin-bottom:0%;
+  z-index:2;
+}
+#upperSquare2.out{
+  background-color:#f2f0c4;
+  left:140px;
+  transition:1.5s;
+}
+#upperSquare2.in{
+  background-color:black;
+  left:0;
+  transition:1.5s;
+}
+
+#upperSquare3{
+  background-color:black;
+  width:120px;
+  height:120px;
+  position:absolute;
+  bottom:0;
+  left:0;
+  margin-bottom:0%;
+  z-index:1;
+}
+#upperSquare3 img{
+  width:90%;
+  margin-left:5%;
+  margin-top:4%;
+}
+#upperSquare3.out{
+  background-color:#def2c4;
+  left:280px;
+  transition:1.5s;
+}
+#upperSquare3.in{
+  background-color:black;
+  left:0;
+  transition:1.5s;
+}
+#upperSquare4{
+  background-color:black;
+  width:120px;
+  height:120px;
+  position:absolute;
+  bottom:0;
+  left:0;
+  margin-bottom:0%;
+  z-index:1;
+}
+#upperSquare4 img{
+  width:90%;
+  margin-left:5%;
+  margin-top:4%;
+}
+#upperSquare4.out{
+  background-color:grey;
+  left:420px;
+  transition:1.5s;
+}
+#upperSquare4.in{
+  background-color:black;
+  left:0;
+  transition:1.5s;
+}
+
+
+
+
+#middleSquare1{
+  height:120px;
+  width:120px;
+  background-color:black;
+  float:left;
+  margin-left:100%;
+  position:absolute;
+  left:0;
+  top:0;
+  z-index:3;
+}
+#middleSquare1.inside{
+  margin-left:0%;
+  background-color:#78bca4;
+  transition: 2.5s;
+}
+#middleSquare2{
+  height:120px;
+  width:120px;
+  background-color:black;
+  float:left;
+  margin-left:0%;
+  position:absolute;
+  left:0;
+  top:0;
+  z-index:2;
+}
+#middleSquare2 img{
+  width:90%;
+  margin-left:5%;
+  margin-top:5%;
+}
+#middleSquare2.out{
+  left:140px;
+  background-color:#ead8c7;
+  transition:1.5s;
+}
+#middleSquare2.in{
+  left:0;
+  background-color:black;
+  transition:1.5s;
+}
+#middleSquare3{
+  height:120px;
+  width:120px;
+  background-color:black;
+  float:left;
+  margin-left:0%;
+  position:absolute;
+  left:0;
+  top:0;
+  z-index:1;
+}
+#middleSquare3.out{
+  left:280px;
+  background-color:#c4f2e9;
+  transition:1.5s;
+}
+#middleSquare3.in{
+  left:0;
+  background-color:black;
+  transition:1.5s;
+}
+
+
+
+
+#lowerSquare1{
+  width:120px;
+  height:120px;
+  background-color:black;
+  float:left;
+  margin-top:400%;
+  position:absolute;
+  left:0;
+  top:0;
+  z-index:3;
+}
+#lowerSquare1.inside{
+  margin-top:0%;
+  background-color:#f2d7c4;
+  transition:2.5s;
+}
+#lowerSquare2{
+  width:120px;
+  height:120px;
+  background-color:black;
+  float:left;
+  margin-top:0%;
+  position:absolute;
+  left:0;
+  top:0;
+  z-index:2;
+}
+#lowerSquare2.out{
+  background-color:#c4d7f2;
+  left:140px;
+  transition:1.5s;
+}
+#lowerSquare2.in{
+  background-color:black;
+  left:0;
+  transition:1.5s;
+}
+#lowerSquare3{
+  width:120px;
+  height:120px;
+  background-color:black;
+  float:left;
+  margin-top:0%;
+  position:absolute;
+  left:0;
+  top:0;
+  z-index:1;
+}
+#lowerSquare3 img{
+  width:90%;
+  margin-left:5%;
+  margin-top:15%;
+}
+#lowerSquare3.out{
+  background-color:brown;
+  left:280px;
+  transition:1.5s;
+}
+#lowerSquare3.in{
+  background-color:black;
+  left:0;
+  transition:1.5s;
+}
+
+
+
+
+
+
+
+
+#upper{
+  height:50%;
+}
+#middle{
+  float:left;
+  margin-left:32%;
+  background-color:black;
+  width:68%;
+  height:120px;
+  position:relative;
+}
+#lower{
+  height:calc(50% - 120px);
+}
