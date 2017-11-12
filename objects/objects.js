@@ -52,7 +52,7 @@ var ball2 = new Ball(150,50,canvas.width-50,50,-20,0,0,1,"red","black");
 var ball3 = new Ball(200,20,canvas.width/2,30,30,0,0,0.8,"green","yellow");
 var ball4 = new Ball(150,40,40,40,40,0,0,0.7,"blue","#7b9db7");
 
-function draw1(){
+function draw(){
 	ctx.clearRect(0,0,canvas.width,canvas.height);  
 	ball1.draw(ball1.x,ball1.y,ctx);
 	ball2.draw(ball2.x,ball2.y,ctx);
@@ -64,4 +64,4 @@ function draw1(){
 	ball4.update(canvas);
 }
 
-setInterval(draw1, 20);
+setInterval(draw, 20);

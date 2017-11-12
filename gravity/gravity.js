@@ -86,7 +86,4 @@ function draw(){
   
 }
 
-canvas.width = parentdiv.clientWidth;
-canvas.height = parentdiv.clientHeight;
-
 setInterval(draw, 30);

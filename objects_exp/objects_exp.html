@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<head>
+  <link rel="stylesheet" type="text/css" href="objects_exp.css">
+</head>
+<body id="pageBody">
+		<table>
+
+		<tr>
+		<th>
+		<header>Modelling gravity, a tale of two integrators</header>
+		</th>
+		<th>
+		<header>Keeping it simple with objects</header>
+		</th>
+		</tr>
+
+		<tr>
+
+		<td>
+		<p>
+		  <br>
+		  I call the script "objects" because it was my first object oriented java script.
+		  It also uses simple DSP to model acceleration due to gravity.  The DSP 
+		  algorithm uses digital integration.  
+		  <br><br>
+		  Digital integration can be implemented by adding the previous output of the integrator
+		  to the input.  In the z domain, this can be written as:
+		  <br><br>
+		  <eq>
+		  <tab>output = input + output * (z^-1)</tab>
+		  </eq>
+		  <br><br>
+		  The z domain is a good way to represent this mathematically, but for me it is easier
+		  to think of the equation in an intuitive way such as:
+		  <br><br>
+		  <eq>
+		  <tab>output = input + previous output</tab>
+		  </eq>
+		  <br><br>
+		  Integration can be used to make accelearion when we consider that velocity is the derivative
+		  of position and acceleration is the derivative of velocity.  If we go backwards, 
+		  it follows that velocity is the integral of acceleration and position is the integral
+		  of velocity.  Therefore the lines..
+		  <br><br>
+		  <eq>
+		  <tab>dy = dy + ddy;</tab><br>
+		  <tab>y = y + dy;</tab>
+		  </eq>
+		  <br><br>
+		  ..implement acceleration, where ddy is the acceleration, dy is the velocity and y is the 
+		  position.  In terms of digital integration, the above two lines can be thought of as two 
+		  integrators.  
+		  <br><br>
+		  The fisrt integrator has ddy as its input.  dy on the right is the current output
+		  and dy on the left is the next output (the result of the addition).  It could also be thought of
+		  as dy on the left being the current sample and dy on the right being the previous sample, but this
+		  isn't as intuitive for me.
+		  <br><br>
+		  The second integrator has dy as its input.  y on the left can be thought of as the current output
+		  and y on the right can be thought of as the previous output.
+		  <br><br>
+		  ddy in this script is a constant, because acceleration due to gravity can be thought of as a constant
+		  (and also the mass of an object divided by the force of gravity).  When a collision with the bottom of
+		  the screen is detected, the magnitude of the velocity (dy) is reversed.  This is how the bouncing effect
+		  is acheived.
+		  <br><br>
+		  Motion in the x direction is similar.  For this component of the motion, I have an initial velocity
+		  and a slight deceleration to approximate drag and make the motion appear more natural.  Collision detection
+		  is also used in the x direction to reverse the velocity when the edge of the screen is encountered.  The
+		  collision detection can be written as:
+		  <br><br>
+		  <eq>
+		  <tab>if((location + radius) == edge){</tab><br>
+		  <tab><tab>dy = -dy;</tab></tab><br>
+		  <tab>}</tab>
+		  </eq>
+		  <br><br>
+		  Note that this is a simplified version of the collision detection.  See the script for the details.
+		</p>
+		</td>
+
+		<td>
+		<p>
+		  <br>
+		  The other technique that is notable to explain about this script is that it uses object oriented 
+		  design to simplify the implementation of multiple independent balls.  By independent I mean that 
+		  each ball has its own position, velocity and acceleration.  To implement multiple balls using 
+		  procedural code, all of these variables would have to be created and updated for each ball.  Also, 
+		  and maybe more importantly, it might be easy to confuse the variables between one ball and another.  
+		  Taking an object oriented approach means that we only need to create one definition of what a ball 
+		  entails and it keeps track for us all the variables associated with each instance of a "ball".
+		  <br><br>
+		  In javascript, a type of object can be created using "function" (which can be thought of as being
+		  similar to using "class" in C++ or java.  The following code is the definitio of a "ball" object.
+		  <br><br>
+		  <eq>
+		  <tab>function Ball(damp,radius,x,y,dx,dy,ddx,ddy,fill,border){<br></tab>
+		  <tab><tab>this.damp = damp, this.radius = radius, this.x = x, this.y = y,<br></tab></tab>
+		  <tab><tab>this.dx = dx, this.dy = dy, this.ddx = ddx, this.ddy = ddy,<br></tab></tab>
+		  <tab><tab>this.fill = fill, this.border = border<br></tab></tab>
+		  </eq>
+		  <br>
+		  The arguments to the Ball function are the initial conditions for position, velocity and acceleration
+		  int the x and y dimensions.  There are also arguments for x dimension damping, the ball radius, the fill
+		  color and the border color.  Basically, anything unique about a particular instance of this Ball object 
+		  are defined in these arguments.  
+		  <br><br>
+		  The "this" keyword specifies that a variable is inside the scope of the Ball object.  For instance,
+		  <eq>this.x = x</eq> sets the variable x which is inside the scope of Ball equal to the argument x.
+		  <br><br>
+		  In addition to variables, there are two methods which are defined as part of the Ball object.  These are 
+		  "draw" and "update".  The draw method takes the x and y position of the ball and the context in which it 
+		  is to be drawn and draws the ball.  Note that this method uses the radius, fill color and border color, 
+		  which were defined when the Ball object was instantiated.  The upadte method carries out the math that is 
+		  described to the left.  Note that since all of the variables to control position, velocity and acceleration
+		  are inside the scope of the Ball object, only the context is passed to this method for collision detection 
+		  purposes.
+		  <br><br>
+		  Once the Ball object has been defined, several balls can be created.  The lines
+		  <br><br>
+		  <eq>
+		  <tab>var ball1 = new Ball(150,30,canvas.width-30,30,-11,0,0,0.5,"black","white");<br></tab>
+		  <tab>var ball2 = new Ball(150,50,canvas.width-50,50,-20,0,0,1,"red","black");<br></tab>
+		  <tab>var ball3 = new Ball(200,20,canvas.width/2,30,30,0,0,0.8,"green","yellow");<br></tab>
+		  <tab>var ball4 = new Ball(150,40,40,40,40,0,0,0.7,"blue","#7b9db7");<br></tab>
+		  </eq>
+		  <br>
+		  create 4 unique balls, each with its own colors, radius and initial conditions.
+		  <br><br>
+		  The frame rate is implemented by the statement <eq>setInterval(draw, 20)</eq>, which calls the function 
+		  "draw" every 20ms.  Within the function draw, the screen is cleared and the draw and update methods of 
+		  each ball are called, as such
+		  <br><br>
+		  <eq>
+		  <tab>ctx.clearRect(0,0,canvas.width,canvas.height);<br></tab>
+		  <tab>ball1.draw(ball1.x,ball1.y,ctx);<br></tab>
+		  <tab>ball1.update(canvas);<br></tab>
+		  </eq>
+		  <br>
+		  Note that balls 2, 3 and 4 are omitted for conciseness.
+		  
+		</p>
+		</td>
+
+		</tr>
+		</table>
+
+</body>
+
