@@ -7,10 +7,14 @@ canvas.height = parentdiv.clientHeight;
 
 var backButton = document.getElementById("backButton");
 var backButtonText = document.getElementById("backButtonText");
+var expButton = document.getElementById("expButton");
+var expButtonText = document.getElementById("expButtonText");
 
 window.onload = function(){
   backButton.className = "opaque";
   backButtonText.className = "opaque"; 
+  expButton.className = "opaque";
+  expButtonText.className = "opaque"; 
 };
 
 function Ball(damp,radius,x,y,dx,dy,ddx,ddy,fill,border) {

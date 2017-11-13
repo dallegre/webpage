@@ -23,6 +23,11 @@ eq{
 	text-align:left;
 }
 
+a{
+	text-decoration:none;
+	color:grey;
+}
+
 tab{
 	padding-left:1em;
 }
