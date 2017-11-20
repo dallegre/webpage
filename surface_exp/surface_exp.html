@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<head>
+  <link rel="stylesheet" type="text/css" href="surface_exp.css">
+</head>
+<body id="pageBody">
+		<table>
+
+		<tr>
+		<th>
+		<header>Infinite impulse responses</header>
+		</th>
+		<th>
+		<header>Object orientation part deux</header>
+		</th>
+		</tr>
+
+		<tr>
+
+		<td>
+		<p>
+		  <br>
+		  This <a href="../motion/motion.html">page</a> is based on a method I devised to create 3d objects on 
+		  a 2 dimensional plane.  I thought it would be fun to invent a method to do this rather than look up
+		  the canonical way to do it.  What I came up with is based on perspective.  
+		  <br><br>
+		  Initially a focal point is chosen.  Then a line of points that represent the cosest row of points is drawn.
+		  A set of lines is drawn between each of those points and the focal point.  Along each of those lines, other 
+		  points are drawn successively higher on the y axis.  As I increment further up (or "back" in the z dimension)
+		  on the y axis, I decrease the distance between these points by a scaling function.  
+		  <br><br>
+		  This gives a grid that looks like it exists in 3 dimensional space.  
+		  <eq>
+		  <tab>output = (1-x) * input + x * output * (z^-1)</tab>
+		  </eq>
+		  <br><br>
+		</p>
+		</td>
+
+		<td>
+		<p>
+		  <br>
+		  The <a href="../motion/motion.js">script</a> also uses objects to create many circles that each have different
+		  properties.  The object definition is called "Tracer".  Each Tracer object contains its own filter and circle.
+		  At the instantiation of a new Tracer object, the cutoff frequency of the filter is defined and the radius of the 
+		  circle is set.  These objects are instantiated in a list, allowing me to define a larger number of these 
+		  objects than I would want to explicitly.  The index of the array is used to set the progressively
+		  larger radii and the progresively lower cutoff frequencies.
+		  <br><br>
+		</p>
+		</td>
+
+		</tr>
+		</table>
+
+</body>
+

@@ -77,7 +77,7 @@ function draw(){
    ctx.fillRect(0,0,canvas.width,canvas.height);
    ctx.globalAlpha = 0.07;
    //color = color - 20;
-   ctx.strokeStyle = "white";
+   ctx.strokeStyle = "yellow";
 
   //draw the thing
   drawPolygon(index1, index2, index3, index4);

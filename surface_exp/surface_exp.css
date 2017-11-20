@@ -1,0 +1,42 @@
+
+#pageBody{
+	background-color:black;
+}
+
+table{
+	width: 100%;
+}
+
+p{
+	color:white;
+	margin-left: 20px;
+	margin-top: 10px;
+	text-align:left;
+	width: 85%;
+}
+
+td{
+	vertical-align:top;
+}
+
+eq{
+	color:yellow;
+	text-align:left;
+}
+
+a{
+	text-decoration:none;
+	color:grey;
+}
+
+tab{
+	padding-left:1em;
+}
+
+header{
+	color:grey;
+	margin-left: 20px;
+	margin-top: 20px;
+	text-align:left;
+	width: 800px;
+}
