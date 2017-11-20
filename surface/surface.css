@@ -29,7 +29,7 @@
   opacity: 0;
 }
 #backButton.opaque{
-  transition: 25s;
+  transition: 10s;
   opacity: 1;
 }
 
@@ -42,7 +42,7 @@ p{
   opacity: 0;
 }
 p.opaque{
-  transition: 35s;
+  transition: 10s;
   opacity: 1;
 }
 

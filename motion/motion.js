@@ -40,18 +40,20 @@ function Tracer(radius, cutoff, canvas){			//10 to 30 is a good "cutoff" (higher
   this.coeff2 = (cutoff - 1) / cutoff;
   this.radius = radius;
   
-  this.update = function(ctx, x, y){
+  this.update = function(ctx, x, y, color){
     this.mousexcurrent = x;
     this.mouseycurrent = y;
     this.mousexcurrent = this.mousexcurrent * this.coeff1 + this.mousexprev * this.coeff2;
     this.mouseycurrent = this.mouseycurrent * this.coeff1 + this.mouseyprev * this.coeff2;
     this.mousexprev = this.mousexcurrent;
     this.mouseyprev = this.mouseycurrent;
-    ctx.strokeStyle = "white";
+    ctx.strokeStyle = color;
     ctx.beginPath();
     ctx.arc(this.mousexcurrent, this.mouseycurrent, this.radius, 0, 2*Math.PI);
     ctx.stroke();    
     ctx.closePath();
+	ctx.fillStyle = color;
+	ctx.fill();
   }
 
 }
@@ -65,9 +67,9 @@ canvas.addEventListener('mousemove', function(evt) {
 
 list = [];
 
-for(i = 1; i < 24; i++){
+for(i = 1; i < 12; i++){
   //worm mode
-  list[i] = new Tracer(((i+.5)*10) ** 1.3, i ** 1.7, canvas);
+  list[i] = new Tracer(((12-i)*10) ** 1.65, (12-i) ** 1.5, canvas);
   //slinky mode
   //list[i] = new Tracer(30, i ** 1, canvas);
 }
@@ -77,11 +79,16 @@ function draw(){
   ctx.fillStyle = "black";
   ctx.fillRect(0,0,canvas.width,canvas.height);
   
-  for(i = 1; i < 24; i++){
-  	list[i].update(ctx, globalx, globaly);
+  for(i = 1; i < 12; i++){
+	if(i % 2 == 1){
+		color = "white";
+	}else{
+		color = "green";
+	}
+  	list[i].update(ctx, globalx, globaly,color, color);
   }
   
 }
 
 //10ms frame interval
-setInterval(draw, 20);
+setInterval(draw, 40);
