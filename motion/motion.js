@@ -34,22 +34,18 @@ function getMousePos(canvas, evt) {
 function Tracer(radius, cutoff, canvas){			//10 to 30 is a good "cutoff" (higher is lower)
   this.mousexprev = canvas.width / 2;
   this.mouseyprev = canvas.width / 2;
-  this.mousexcurrent = canvas.width / 2;
-  this.mouseycurrent = canvas.width / 2;
   this.coeff1 = 1 / cutoff;
   this.coeff2 = (cutoff - 1) / cutoff;
   this.radius = radius;
   
   this.update = function(ctx, x, y, color){
-    this.mousexcurrent = x;
-    this.mouseycurrent = y;
-    this.mousexcurrent = this.mousexcurrent * this.coeff1 + this.mousexprev * this.coeff2;
-    this.mouseycurrent = this.mouseycurrent * this.coeff1 + this.mouseyprev * this.coeff2;
-    this.mousexprev = this.mousexcurrent;
-    this.mouseyprev = this.mouseycurrent;
+    x = x * this.coeff1 + this.mousexprev * this.coeff2;
+    y = y * this.coeff1 + this.mouseyprev * this.coeff2;
+    this.mousexprev = x;
+    this.mouseyprev = y;
     ctx.strokeStyle = color;
     ctx.beginPath();
-    ctx.arc(this.mousexcurrent, this.mouseycurrent, this.radius, 0, 2*Math.PI);
+    ctx.arc(x, y, this.radius, 0, 2*Math.PI);
     ctx.stroke();    
     ctx.closePath();
 	ctx.fillStyle = color;

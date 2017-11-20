@@ -68,7 +68,7 @@ for(i = 0; i < osSwap.length; i++){
 
 canvas.addEventListener('click', function(event){
     event = event || window.event;
-    globalX = numX/2 + Math.round((event.pageX - canvas.width/2)/5);
+    globalX = Math.round(((event.pageX)/canvas.width)*numX);
     globalY = numY - Math.round(event.pageY / 5);
     //alert("X is " + globalX + " and Y is " + globalY);
     mousePressed = 1;

@@ -28,29 +28,32 @@
 		  </eq>
 		  <br><br>
 		  Note that if <eq>(1-x)</eq> and <eq>x</eq> were each replaced by 1, this equation would implement an integrator.
-		  Instead, this equatio implements a single pole lowpass filter.  This particular type of filter is called an 
+		  Instead, this equation implements a single pole lowpass filter.  This particular type of filter is called an 
 		  "infinite impulse response" filter because if the numbers it operated on had infinite resolution, the impulse response 
-		  would never settle out to exactly 0 (so long as x is not equal to 0).  An intuitive way to think of this 
+		  would never settle out to exactly 0 (so long as x is not equal to 0).  An intuitive way to think about this 
 		  is to image multiplying a number by 0.5 and infinite number of times.  The number will be halved each time you
-		  do the multiplication and it will become infinitely small, but never exactly 0.  Because the previous output 
+		  do the multiplication and it will become infinitely small, but never be exactly 0.  Because the previous output 
 		  determines the current output, this type of filter is also called a "recursive" filter.
 		  <br><br>
 		  To implement a single pole lowpass filter of this type at a given cutoff freuency, the following equation
-		  can be used to determine the coefficients:
+		  can be used to determine the coefficients (written in pseudo code):
 		  <br><br>
 		  <eq>
-		  <tab>x = e^(-2*pi*fc/fs)</tab>
+		  <tab>x = e^(-2*pi*fc/fs)<br></tab>
 		  </eq>
+		  <br>
+		  where fs is the sampling frequency and fc is the cutoff frequency.  Pi and e are the familiar mathematical 
+		  constants.
 		  <br><br>
 		  The quantities being filtered in this case are the x and y positions of the centers of the circles.  As the 
 		  mouse moves across the canvas, it generates a signal that is filtered by increasingly low cutoff frequencies 
 		  as the circles get larger.  By this mechanism, the smaller circles react more quickly and the larger circles 
 		  react more slowly.
 		  <br><br>
-		  In an audio system, one might want to calculate the cutoff freuqency of the filter so that an exact frequency
+		  In an audio application, one might want to calculate the cutoff freuqency of the filter so that an exact frequency
 		  response is acheived.  In this implementation, I didn't bother to calculate the cutoff freuqenies.  I determined
 		  the coefficients using an empirical process (trial and error).  If one were wanting to characterize an algorithm
-		  like this for the ideal response to a user input, such a quantification could be necessary.
+		  like this for the ideal response for a user interface, such a quantification could be necessary.
 		</p>
 		</td>
 
@@ -60,8 +63,8 @@
 		  The <a href="../motion/motion.js">script</a> also uses objects to create many circles that each have different
 		  properties.  The object definition is called "Tracer".  Each Tracer object contains its own filter and circle.
 		  At the instantiation of a new Tracer object, the cutoff frequency of the filter is defined and the radius of the 
-		  circle is defined.  These objects are instantiated in a list, allowing me to define a larger number of these 
-		  objects than I would like to explicitly in a concise way.  The index of the array is used to set the progressively
+		  circle is set.  These objects are instantiated in a list, allowing me to define a larger number of these 
+		  objects than I would want to explicitly.  The index of the array is used to set the progressively
 		  larger radii and the progresively lower cutoff frequencies.
 		  <br><br>
 		  The definition of the Tracer object is as follows:
@@ -71,22 +74,18 @@
 		  <tab>function Tracer(radius, cutoff, canvas){<br></tab>
   		  <tab><tab>this.mousexprev = canvas.width / 2;<br></tab></tab>
   		  <tab><tab>this.mouseyprev = canvas.width / 2;<br></tab></tab>
-  		  <tab><tab>this.mousexcurrent = canvas.width / 2;<br></tab></tab>
-  		  <tab><tab>this.mouseycurrent = canvas.width / 2;<br></tab></tab>
   		  <tab><tab>this.coeff1 = 1 / cutoff;<br></tab></tab>
   		  <tab><tab>this.coeff2 = (cutoff - 1) / cutoff;<br></tab></tab>
   		  <tab><tab>this.radius = radius;<br></tab></tab>
-		  <br><br>  
+		  <br>  
   		  <tab><tab>this.update = function(ctx, x, y){<br></tab></tab>
-    	  <tab><tab><tab>this.mousexcurrent = x;<br></tab></tab></tab>
-    	  <tab><tab><tab>this.mouseycurrent = y;<br></tab></tab></tab>
-    	  <tab><tab><tab>this.mousexcurrent = this.mousexcurrent * this.coeff1 + this.mousexprev * this.coeff2;<br></tab></tab></tab>
-    	  <tab><tab><tab>this.mouseycurrent = this.mouseycurrent * this.coeff1 + this.mouseyprev * this.coeff2;<br></tab></tab></tab>
-    	  <tab><tab><tab>this.mousexprev = this.mousexcurrent;<br></tab></tab></tab>
-    	  <tab><tab><tab>this.mouseyprev = this.mouseycurrent;<br></tab></tab></tab>
+    	  <tab><tab><tab>x = x * this.coeff1 + this.mousexprev * this.coeff2;<br></tab></tab></tab>
+    	  <tab><tab><tab>y = y * this.coeff1 + this.mouseyprev * this.coeff2;<br></tab></tab></tab>
+    	  <tab><tab><tab>this.mousexprev = x;<br></tab></tab></tab>
+    	  <tab><tab><tab>this.mouseyprev = y;<br></tab></tab></tab>
     	  <tab><tab><tab>ctx.strokeStyle = "white";<br></tab></tab></tab>
     	  <tab><tab><tab>ctx.beginPath();<br></tab></tab></tab>
-    	  <tab><tab><tab>ctx.arc(this.mousexcurrent, this.mouseycurrent, this.radius, 0, 2*Math.PI);<br></tab></tab></tab>
+    	  <tab><tab><tab>ctx.arc(x, y, this.radius, 0, 2*Math.PI);<br></tab></tab></tab>
     	  <tab><tab><tab>ctx.stroke();<br></tab></tab></tab>    
     	  <tab><tab><tab>ctx.closePath();<br></tab></tab></tab>
 		  <tab><tab>}<br></tab></tab>
@@ -101,9 +100,8 @@
 		  <tab>}<br>
 		  </eq>
 		  <br><br>
-		  Note that I didn't create two separate methods to update and draw the Tracer objects.  I opted
-		  to do both of those things in the "update" method.  Again, this method is called in the "draw" 
-		  function, which is called by setInterval to implement a frame rate.  
+		  The update method calculates a new center position for each Tracer object in the list and draws them anew for each frame.  
+		  As in the "objects" page, this method is called in the "draw" function, which is called by setInterval to implement a frame rate.  
 		</p>
 		</td>
 
