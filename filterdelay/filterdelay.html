@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <link rel="stylesheet" type="text/css" href="filterdelay.css">
+</head>
+<body id="pageBody">
+  <div id="upperSpacer">
+
+    <p class="bigText">This is a download page for my filter and delay plugin.</p>
+	<p class="smallText">
+	  Here is an audio <a href="https://soundcloud.com/dan_all/more-tinkering-w-the-plugs">demo</a>.  It uses <a href="https://www.juce.com">JUCE</a>, which is a c++ API for plugins and applications.  The filters are state variable highpass and lowpass in series.  There is 32x upsampling for the filters.  The delay is a fractionally interpolated delay with sine wave modulation of the delay time.  The modulation is 90 degrees out of phase between the left and right channel.  Click below to download VST for Windows, Linux and AU for OSX.</br>
+	</p>
+
+  </div>
+  <div id="mainPage">
+
+  <img src="filter.png">
+  </img>
+
+  <div id="icons">
+	<a href="filterdelay.dll"><img src="windows-8-icon.png" id="win"></a>
+	<a href="filterdelay.so"><img src="linux-icon.png" id="lin"></a>
+	<a href="filterdelay.component"><img src="icon_mac_round_512.png" id="mac"></a>
+  </div>
+
+
+  <a href ="../index.html">
+    <div id="backButton">
+     <p id="backButtonText">Back</p>
+   </div>
+  </a>
+
+
+  </div>  
+  <script src="filterdelay.js"></script>
+</body>
+
+

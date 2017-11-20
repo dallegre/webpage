@@ -27,12 +27,13 @@
 		  <tab>output = (1-x) * input + x * output * (z^-1)</tab>
 		  </eq>
 		  <br><br>
-		  Note that if <eq>(1-x)</eq> and <eq>x</eq> were each replaced by 1, this would be an integrator.
-		  This equation however, implements a single pole lowpass filter.  It is called an "infinite impulse 
-		  response" filter because if the numbers it operated on had infinite resolution, the impulse response 
-		  would never settle out to exactly 0 (as long as x is not equal to 0).  An intuitive way to think of this 
-		  is to notice that there is positive feedback between the current output and the previous output.  Because 
-		  the previous output determines the current output, this type of filter is also called a "recursive" filter.
+		  Note that if <eq>(1-x)</eq> and <eq>x</eq> were each replaced by 1, this equation would implement an integrator.
+		  Instead, this equatio implements a single pole lowpass filter.  This particular type of filter is called an 
+		  "infinite impulse response" filter because if the numbers it operated on had infinite resolution, the impulse response 
+		  would never settle out to exactly 0 (so long as x is not equal to 0).  An intuitive way to think of this 
+		  is to image multiplying a number by 0.5 and infinite number of times.  The number will be halved each time you
+		  do the multiplication and it will become infinitely small, but never exactly 0.  Because the previous output 
+		  determines the current output, this type of filter is also called a "recursive" filter.
 		  <br><br>
 		  To implement a single pole lowpass filter of this type at a given cutoff freuency, the following equation
 		  can be used to determine the coefficients:
@@ -45,13 +46,18 @@
 		  mouse moves across the canvas, it generates a signal that is filtered by increasingly low cutoff frequencies 
 		  as the circles get larger.  By this mechanism, the smaller circles react more quickly and the larger circles 
 		  react more slowly.
+		  <br><br>
+		  In an audio system, one might want to calculate the cutoff freuqency of the filter so that an exact frequency
+		  response is acheived.  In this implementation, I didn't bother to calculate the cutoff freuqenies.  I determined
+		  the coefficients using an empirical process (trial and error).  If one were wanting to characterize an algorithm
+		  like this for the ideal response to a user input, such a quantification could be necessary.
 		</p>
 		</td>
 
 		<td>
 		<p>
 		  <br>
-		  This <a href="../motion/motion.js">script</a> also uses objects to create many circles that each have different
+		  The <a href="../motion/motion.js">script</a> also uses objects to create many circles that each have different
 		  properties.  The object definition is called "Tracer".  Each Tracer object contains its own filter and circle.
 		  At the instantiation of a new Tracer object, the cutoff frequency of the filter is defined and the radius of the 
 		  circle is defined.  These objects are instantiated in a list, allowing me to define a larger number of these 
