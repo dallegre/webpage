@@ -28,7 +28,7 @@
   opacity: 0;
 }
 #backButton.opaque{
-  transition: 25s;
+  transition: 10s;
   opacity: 1;
 }
 
@@ -45,7 +45,7 @@
   opacity: 0;
 }
 #expButton.opaque{
-  transition: 25s;
+  transition: 10s;
   opacity: 1;
 }
 
