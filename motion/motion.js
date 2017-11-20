@@ -64,10 +64,7 @@ canvas.addEventListener('mousemove', function(evt) {
 list = [];
 
 for(i = 1; i < 12; i++){
-  //worm mode
   list[i] = new Tracer(((12-i)*10) ** 1.65, (12-i) ** 1.5, canvas);
-  //slinky mode
-  //list[i] = new Tracer(30, i ** 1, canvas);
 }
 
 function draw(){
