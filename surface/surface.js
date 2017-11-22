@@ -14,6 +14,8 @@ var backButtonText = document.getElementById("backButtonText");
 window.onload = function(){
   backButton.className = "opaque";
   backButtonText.className = "opaque"; 
+  expButton.className = "opaque";
+  expButtonText.className = "opaque"; 
 };
 
 var initDone = 0;

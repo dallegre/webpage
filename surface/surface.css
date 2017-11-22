@@ -33,6 +33,23 @@
   opacity: 1;
 }
 
+#expButton{
+  position: absolute;
+  margin-top: 500px;
+  margin-left: 700px;
+  display: block;
+  height: 120px;
+  width: 170px;
+  color: black;
+  background-color: grey;
+  z-index: 1;
+  opacity: 0;
+}
+#expButton.opaque{
+  transition: 10s;
+  opacity: 1;
+}
+
 p{
   color: black;
   margin-top: 45px;
